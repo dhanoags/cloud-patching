@@ -4,10 +4,11 @@
   tasks:
     - name: Get Date for today
       command:
-        cmd: "date +%Y-%m-%d"
+        cmd: "date +%Y-%M-%d"
       register: date
     
     - name: Show date
       debug:
         var: date.stdout
+
 
