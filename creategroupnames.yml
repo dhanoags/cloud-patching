@@ -9,5 +9,5 @@
     
     - name: Show date
       debug:
-        var: date
-        
+        var: date.stdout
+
