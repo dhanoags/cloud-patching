@@ -1,2 +1,2 @@
 ---
-- src: awx.awx
+- name: awx.awx
