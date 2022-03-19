@@ -1,10 +1,10 @@
 ---
-- host: localhost
+- hosts: localhost
   collections:
     - awx.awx
   
   vars:
-    date: '2022-03-16 16:00:00'
+    - date: '2022-03-16 16:00:00'
 
   tasks:
     - name: Build schedule
