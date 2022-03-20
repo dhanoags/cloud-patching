@@ -4,5 +4,5 @@
   tasks:
     - name: Get all groups from inventory
       debug:
-        var: groups
+        var: groups.keys()
 
