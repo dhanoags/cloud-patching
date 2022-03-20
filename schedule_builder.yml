@@ -4,7 +4,8 @@
     - awx.awx
   
   vars:
-    - date: '2022-03-19 22:00:00'
+    - date: '2022-03-19 22:19:00'
+    - timezome: 'America/Winnipeg'
 
   tasks:
     - name: set Date time
@@ -16,7 +17,7 @@
     - name : show date time and rrule
       debug:
         #var: datetime
-        msg: "DTSTART;TZID='America/Winnipeg':{{ datetime }} RRULE:FREQ=DAILY;INTERVAL=1;COUNT=1"
+        msg: "DTSTART;TZID={{ timezome }}:{{ datetime }} RRULE:FREQ=DAILY;INTERVAL=1;COUNT=1"
 
     - name: Build schedule
       schedule:
@@ -27,7 +28,7 @@
         limit: "_{{ item }}"
         organization: "Evenproton"
         rrule: |
-          DTSTART;TZID=America/Winnipeg:{{ datetime }} 
+          DTSTART;TZID={{ timezome }}:{{ datetime }} 
           RRULE:FREQ=DAILY;COUNT=1;INTERVAL=1
       with_items:
         - A
