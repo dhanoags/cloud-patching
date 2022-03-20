@@ -4,7 +4,7 @@
     - awx.awx
   
   vars:
-    - date: '2022-03-19 22:00:00'
+    - date: '2022-03-19 22:00'
 
   tasks:
     - name: set Date time
@@ -15,7 +15,7 @@
     - name : show date time and rrule
       debug:
         #var: datetime
-        msg: "DTSTART;TZID=America/Winnipeg:{{ datetime }} RRULE:FREQ=DAILY;INTERVAL=1;COUNT=1"
+        msg: "DTSTART;TZID='America/Winnipeg':{{ datetime }} RRULE:FREQ=DAILY;INTERVAL=1;COUNT=1"
 
     - name: Build schedule
       schedule:
