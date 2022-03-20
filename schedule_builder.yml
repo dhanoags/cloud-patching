@@ -4,7 +4,7 @@
     - awx.awx
   
   vars:
-    - date: '2022-03-19 17:59:00'
+    - date: '2022-03-19 22:00:00'
 
   tasks:
     - name: set Date time
@@ -25,7 +25,7 @@
         inventory: AWS-Inventory
         limit: "_{{ item }}"
         organization: "Evenproton"
-        rrule: "DTSTART:{{ datetime }} RRULE:FREQ=DAILY;INTERVAL=1;COUNT=1"
+        rrule: "DTSTART:{{ datetime }};TZ=America/Winnipeg RRULE:FREQ=DAILY;INTERVAL=1;COUNT=1"
       with_items:
         - A
         - B
