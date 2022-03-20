@@ -5,7 +5,10 @@
     - name: Get all groups from inventory
       set_fact:
         groupnames: "{{ groups.keys() | list }}"
+        dategroups: "{{ groupnames | regex_search('^date_') }}"
+        timegroups: "{{ groupnames | regex_search('^time') }}"
+        appgroups: "{{ groupnames | regex_search('^type') }}"
     - name: Prep group scheduling
       debug:
-        var: groupnames
+        msg: "GroupNames : {{ groupnames }}; DateGroups: {{ dategroups }}; TimeGroups : {{ timegroups }}; AppGroups: {{ appgroups }}"
 
