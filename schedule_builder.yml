@@ -4,7 +4,7 @@
     - awx.awx
   
   vars:
-    - date: '2022-03-19 17:55:00'
+    - date: '2022-03-19 17:59:00'
 
   tasks:
     - name: set Date time
