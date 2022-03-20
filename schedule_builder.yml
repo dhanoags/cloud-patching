@@ -4,7 +4,7 @@
     - awx.awx
   
   vars:
-    - date: '2022-03-19 22:19:00'
+    - date: '2022-03-19 22:32:00'
     - timezome: 'America/Winnipeg'
 
   tasks:
@@ -25,7 +25,7 @@
         state: present
         unified_job_template: "Run Patch"
         inventory: AWS-Inventory
-        limit: "_{{ item }}"
+        limit: "_{{ item }} && _C"
         organization: "Evenproton"
         rrule: |
           DTSTART;TZID={{ timezome }}:{{ datetime }} 
