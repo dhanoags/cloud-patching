@@ -15,7 +15,7 @@
     - name : show date time and rrule
       debug:
         #var: datetime
-        msg: "DTSTART;TZ=America/Winnipeg:{{ datetime }} RRULE:FREQ=DAILY;INTERVAL=1;COUNT=1"
+        msg: "DTSTART;TZID=America/Winnipeg:{{ datetime }} RRULE:FREQ=DAILY;INTERVAL=1;COUNT=1"
 
     - name: Build schedule
       schedule:
@@ -25,9 +25,7 @@
         inventory: AWS-Inventory
         limit: "_{{ item }}"
         organization: "Evenproton"
-        rrule: |
-          DTSTART;TZ=America/Winnipeg:{{ datetime }}
-          RRULE:FREQ=DAILY;INTERVAL=1;COUNT=1
+        rrule: "DTSTART;TZID=America/Winnipeg:{{ datetime }} RRULE:FREQ=DAILY;INTERVAL=1;COUNT=1"
       with_items:
         - A
         - B
