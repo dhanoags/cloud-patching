@@ -8,20 +8,9 @@
       
     - name: Set date variable
       set_fact:
-        dategroups: "{{ item }}"
-      when: {{ item | regex_search('^date_') }}
-      with_items: "{{ groupnames }}"
-
-    - name: Set time variable
-      set_fact:  
-        timegroups: "{{ item }}"
-      when: "{{ item | regex_search('^time') }}"
-      with_items: "{{ groupnames }}"
-
-    - name: Set app variable facts
-      set_fact:  
-        appgroups: "{{ item }}"
-      when: "{{ item | regex_search('^type') }}"
+        dategroups: "{{ item | regex_search('^date_') }}"
+        timegroups: "{{ item | regex_search('^time') }}" 
+        appgroups: "{{ item | regex_search('^type') }}"
       with_items: "{{ groupnames }}"
       
       
