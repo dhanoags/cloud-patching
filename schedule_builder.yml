@@ -22,7 +22,8 @@
         name: "Patching_{{ item }}"
         state: present
         unified_job_template: "Run Patch"
-        inventory: "_{{ item }}"
+        inventory: AWS-Inventory
+        limit: "_{{ item }}"
         organization: "Evenproton"
         rrule: "DTSTART;TZ=America/Winnipeg:{{ datetime }} RRULE:FREQ=DAILY;COUNT=1"
       with_items:
