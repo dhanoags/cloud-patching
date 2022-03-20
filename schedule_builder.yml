@@ -9,7 +9,7 @@
   tasks:
     - name: set Date time
       set_fact:
-        datetime: "{{ date |  regex_replace('-') | regex_replace(' ','T') |  regex_replace(':') | regex_replace('^(.*)$','\\1Z') }}"
+        datetime: "{{ date |  regex_replace('-') | regex_replace(' ','T') |  regex_replace(':') }}"
         # time: "{{ date |  to_datetime('%H%M%S') }}"
       
     - name : show date time and rrule
