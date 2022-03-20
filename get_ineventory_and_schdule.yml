@@ -3,6 +3,9 @@
 
   tasks:
     - name: Get all groups from inventory
+      set_fact:
+        groupnames: "{{ groups.keys() | list }}"
+    - name: Prep group scheduling
       debug:
-        var: groups.keys()
+        var: groupnames
 
