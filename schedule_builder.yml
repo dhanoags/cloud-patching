@@ -4,24 +4,28 @@
     - awx.awx
   
   vars:
-    - date: '2022-03-16 16:00:00'
+    - date: '2022-03-19 17:55:00'
 
   tasks:
-    - name: Generate schedule
-      tower_schedule_rrule:
-        _terms: none
-        start_date: "{{ date }}"
-      register: schduleddate
+    - name: set Date time
+      set_fact:
+        datetime: "{{ date |  regex_replace('-') | regex_replace(' ','T') |  regex_replace(':') | regex_replace('^(.*)$','\\1Z') }}"
+        # time: "{{ date |  to_datetime('%H%M%S') }}"
+      
+    - name : show date time and rrule
+      debug:
+        #var: datetime
+        msg: "DTSTART;TZ=America/Winnipeg:{{ datetime }} RRULE:FREQ=DAILY;COUNT=1"
 
     - name: Build schedule
       schedule:
-        name: Patching
+        name: "Patching_{{ item }}"
         state: present
         unified_job_template: "Run Patch"
         inventory: "_{{ item }}"
         organization: "Evenproton"
-        rrule: "{{ scheduleddate.stdout }}"
+        rrule: "DTSTART;TZ=America/Winnipeg:{{ datetime }} RRULE:FREQ=DAILY;COUNT=1"
       with_items:
         - A
         - B
-        - C
+

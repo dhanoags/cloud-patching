@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  collections:
+    - awx.awx
+  
+  vars:
+    - date: '2022-03-16 16:00:00'
+    - query: "start_date='{{ date }}'"
+
+  tasks:
+    # - name: Create a string for a schedule
+    #   set_fact:
+    #     query: query('awx.awx.tower_schedule_rrule', 'none', start_date='{{ date }}')
+    # - name: Get date from plugin
+    #   awx.awx.schedule_rrule: 
+    #     _terms:  none
+    #     start_date: '2022-03-16 16:00:00'
+    #     timezone: 'Amerca/Winnipeg'
+    #   register: rrule
+    - name: Create a string for a schedule
+      debug:
+        var: "{{ query('awx.awx.schedule_rrule', 'none', start_date='1979-09-13 03:45:07') }}"
+
