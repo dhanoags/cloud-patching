@@ -25,7 +25,9 @@
         inventory: AWS-Inventory
         limit: "_{{ item }}"
         organization: "Evenproton"
-        rrule: "DTSTART;TZID=America/Winnipeg:{{ datetime }} RRULE:FREQ=DAILY;INTERVAL=1;COUNT=1"
+        rrule: |
+          DTSTART;TZID=America/Winnipeg:{{ datetime }}
+          RRULE:FREQ=DAILY;INTERVAL=1;COUNT=1
       with_items:
         - A
         - B
