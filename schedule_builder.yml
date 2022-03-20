@@ -10,6 +10,7 @@
     - name: set Date time
       set_fact:
         datetime: "{{ date |  regex_replace('-') | regex_replace(' ','T') |  regex_replace(':') }}"
+        # | regex_replace('^(.*)$','\\1Z')
         # time: "{{ date |  to_datetime('%H%M%S') }}"
       
     - name : show date time and rrule
@@ -26,7 +27,7 @@
         limit: "_{{ item }}"
         organization: "Evenproton"
         rrule: |
-          DTSTART:{{ datetime }};TZID='America/Winnipeg'
+          DTSTART;TZID=America/Winnipeg:{{ datetime }} 
           RRULE:FREQ=DAILY;COUNT=1;INTERVAL=1
       with_items:
         - A
