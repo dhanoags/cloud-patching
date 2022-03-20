@@ -26,8 +26,8 @@
         limit: "_{{ item }}"
         organization: "Evenproton"
         rrule: |
-          DTSTART;TZID=America/Winnipeg:{{ datetime }} 
-          DTEND;TZID=America/Winnipeg:{{ datetime }} 
+          DTSTART;TZID=local:{{ datetime }} 
+          DTEND;TZID=local:{{ datetime }} 
           RRULE:FREQ=DAILY;COUNT=1;INTERVAL=1
       with_items:
         - A
