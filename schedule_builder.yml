@@ -5,7 +5,6 @@
   
   vars:
     - date: '2022-03-19 22:00:00'
-    - timezone: 'America/Winnipeg'
 
   tasks:
     - name: set Date time
@@ -27,7 +26,7 @@
         limit: "_{{ item }}"
         organization: "Evenproton"
         rrule: |
-          DTSTART;TZID={{ timezone }}:{{ datetime }} 
+          DTSTART;TZID='America/Winnipeg':{{ datetime }} 
           RRULE:FREQ=DAILY;COUNT=1;INTERVAL=1
       with_items:
         - A
