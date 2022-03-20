@@ -9,7 +9,7 @@
     - name: Set date variable
       set_fact:
         dategroups: "{{ item }}"
-      when: "{{ item | regex_search('^date_') }}"
+      when: {{ item | regex_search('^date_') }}
       with_items: "{{ groupnames }}"
 
     - name: Set time variable
